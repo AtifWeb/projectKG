@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <title>Lead Capture</title>
+  </head>
+  <body>
+    <section class="leading-section">
+      <div class="form-wrapper">
+        <h1>Are you ready?</h1>
+        <div class="form-inputs">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" />
+          </div>
+          <div>
+            <label for="phone">Phone No</label>
+            <input type="text" id="phone" />
+          </div>
+          <button id="submit-btn">
+            <img src="./assets/img/submit-btn.png" alt="Submit" />
+          </button>
+        </div>
+        <img src="./assets/img/cloud.png" class="cloud-image" alt="" />
+      </div>
+    </section>
+
+    <script>
+      const formButton = document.getElementById("submit-btn");
+      formButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+
+        if (!name || !email || !phone) {
+          alert("Please fill all fields");
+          return;
+        }
+
+        // Replace with your Google Apps Script Web App URL
+        const url =
+          "https://script.google.com/macros/s/AKfycby5szjjoHhOkiJ3nA02pwsbdTPbB0eVzmvFztAevGJnLQ8Qek-BpWsOT9HWgs7yyuMS/exec";
+
+        const params = new URLSearchParams();
+        params.append("name", name);
+        params.append("email", email);
+        params.append("phone", phone);
+
+        try {
+          const res = await fetch(url, {
+            method: "POST",
+            body: params,
+          });
+          const data = await res.json();
+          if (data.status === "success") {
+            localStorage.setItem("user_id", data.user_id);
+            window.location.href = "page2.html";
+          } else {
+            alert("Submission failed. Try again.");
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Error submitting form. Try again.");
+        }
+      });
+    </script>
+  </body>
+</html>

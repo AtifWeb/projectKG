@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "aperture2";
+  src: url("../font/aperture2.0-webfont.ttf") format("ttf"),
+    url("../font/aperture2.0-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("../img/landing-2.png");
+  background-size: cover;
+  font-family: "aperture2";
+}
+
+.leading-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 1rem;
+  overflow: hidden;
+}
+
+.form-wrapper {
+  background-color: #d6e8f7;
+  width: 450px;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  border-radius: 12px;
+  position: relative;
+}
+.form-wrapper > h1 {
+  font-size: 30px;
+  text-align: center;
+}
+.form-wrapper > .form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1.7rem;
+}
+.form-wrapper > .form-inputs > div {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0.6fr 1fr;
+}
+.form-wrapper > .form-inputs > div label {
+  font-size: 22px;
+  text-align: center;
+}
+.form-wrapper > .form-inputs > div > div {
+  padding-left: 1rem;
+}
+.form-wrapper > .form-inputs > div input {
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #000;
+  box-shadow: 3px 3px 0px rgb(0, 0, 0);
+  outline: none;
+  font-family: "aperture2";
+  font-size: 17px;
+  padding: 0px 10px;
+}
+.form-wrapper > .form-inputs button {
+  width: 150px;
+  border: none;
+  outline: none;
+  margin: 0rem auto;
+  cursor: pointer;
+  margin-top: 15px;
+  background: transparent;
+}
+.form-wrapper > .form-inputs img {
+  width: 100%;
+}
+
+/* cloud image */
+.cloud-image {
+  position: absolute;
+  bottom: -160px;
+  right: -40px;
+  width: 100%;
+  width: 250px;
+}
