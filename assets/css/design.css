@@ -90,7 +90,7 @@ body {
 .design-wrapper input:not(:checked) + .design-overlay p:nth-child(4) {
   display: none;
 }
-/* Additional styles for the new functionality */
+
 .selection-info {
   background: #f8f9fa;
   padding: 15px;
@@ -169,7 +169,6 @@ body {
   font-size: 16px;
 }
 
-/* Design box container */
 .designs-box {
   display: grid;
   grid-template-columns: 1fr 1fr;

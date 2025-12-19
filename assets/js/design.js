@@ -118,16 +118,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleDesignClick(designId, designName, checkbox) {
-    // Toggle checkbox state
     checkbox.checked = !checkbox.checked;
 
     if (checkbox.checked) {
-      // Select if we have less than 5
       if (selectedDesigns.length < 5) {
         selectedIds.add(designId);
         selectedDesigns.push({ id: designId, name: designName });
       } else {
-        // If already have 5, uncheck and show message
         checkbox.checked = false;
         errorMessage.textContent =
           "You can only select 5 designs. Deselect one first.";
@@ -135,19 +132,16 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
     } else {
-      // Deselect
       selectedIds.delete(designId);
       selectedDesigns = selectedDesigns.filter((d) => d.id !== designId);
     }
 
-    // Trigger the change event on the checkbox
     const event = new Event("change", { bubbles: true });
     checkbox.dispatchEvent(event);
 
     updateSelectionDisplay();
   }
 
-  // Generate and append design elements to designsBox
   designs.forEach((design) => {
     const designDiv = document.createElement("div");
 
@@ -168,26 +162,21 @@ document.addEventListener("DOMContentLoaded", function () {
       </label>
     `;
 
-    // Append to designsBox container
     designsBox.appendChild(designDiv);
 
-    // Get references to elements
     const checkbox = designDiv.querySelector(`#design${design.id}`);
     const label = designDiv.querySelector(`label[for="design${design.id}"]`);
     const image = designDiv.querySelector(
       `label[for="design${design.id}"] img`
     );
 
-    // Add click event to the entire design div (except checkbox)
     designDiv.addEventListener("click", function (e) {
-      // Don't handle if clicking directly on checkbox (it will handle itself)
       if (e.target.tagName === "INPUT" || e.target === checkbox) {
         return;
       }
       handleDesignClick(design.id, design.name, checkbox);
     });
 
-    // Add click event specifically to the image
     if (image) {
       image.addEventListener("click", function (e) {
         e.preventDefault();
@@ -195,7 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Add click event to the label
     if (label) {
       label.addEventListener("click", function (e) {
         e.preventDefault();
@@ -203,9 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Also handle checkbox change event directly
     checkbox.addEventListener("change", function (e) {
-      // This ensures the visual state updates when checkbox is clicked directly
       if (
         this.checked &&
         selectedDesigns.length >= 5 &&
@@ -219,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Handle form submission
   submitBtn.addEventListener("click", async function () {
     if (selectedDesigns.length !== 5) {
       errorMessage.textContent = "Please select exactly 5 designs.";
@@ -227,15 +212,12 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Disable button and show loading
     submitBtn.disabled = true;
     submitBtn.textContent = "PROCESSING...";
 
-    // Prepare designs string
     const designsString = selectedDesigns.map((d) => d.name).join(", ");
 
     try {
-      // Send data to Google Sheets
       const url =
         "https://script.google.com/macros/s/AKfycbw0Bsqq2P9g-KQBtCq4hMPRWyIdEVt34erdTAJbAQuFCai0A8D2DtltUb9GvSLPleE2/exec";
 
@@ -252,10 +234,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const data = await res.json();
       if (data.status === "success") {
-        // Clear sessionStorage
         sessionStorage.clear();
 
-        // Redirect to thank you page
         window.location.href = "thankyou.html";
       } else {
         alert("Failed to submit. Please try again.");
