@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const url =
-        "https://script.google.com/macros/s/AKfycbw0Bsqq2P9g-KQBtCq4hMPRWyIdEVt34erdTAJbAQuFCai0A8D2DtltUb9GvSLPleE2/exec";
+        "https://script.google.com/macros/s/AKfycbwQBRUNYc6IhaLR5hqCEeNU6oB3zYfr4pCWpCUVU8HkEJzHo57wrZGD5xwRdjCkyKT8/exec";
 
       const params = new URLSearchParams();
       params.append("name", userName);
