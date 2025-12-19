@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/design.css" />
+    <title>Choose Designs</title>
+    <style></style>
+  </head>
+  <body>
+    <section class="design-container">
+      <div class="design-wrapper">
+        <!-- Selection info section -->
+        <div class="selection-info">
+          <h2>Select Exactly 5 Designs</h2>
+          <p>
+            Please choose 5 designs that you like. You must select exactly 5 to
+            continue.
+          </p>
+        </div>
+
+        <!-- Selected count display -->
+        <div class="selected-count" id="selectedCount">
+          Selected: <span id="count">0</span>/5 designs
+        </div>
+
+        <!-- Error message -->
+        <div class="error-message" id="errorMessage">
+          Please select exactly 5 designs to continue.
+        </div>
+
+        <!-- Designs container -->
+        <div class="designs-box" id="designsBox">
+          <!-- Designs will be dynamically inserted here -->
+        </div>
+
+        <!-- Submit button -->
+        <div class="submit-btn-container" id="submitContainer">
+          <button id="submitBtn">SUBMIT SELECTIONS</button>
+        </div>
+      </div>
+    </section>
+
+    <script src="./assets/js/design.js"></script>
+  </body>
+</html>
